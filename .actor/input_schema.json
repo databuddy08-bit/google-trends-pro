@@ -1,0 +1,206 @@
+{
+    "title": "Google Trends Pro",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "keywords": {
+            "title": "Keywords",
+            "type": "array",
+            "editor": "stringList",
+            "description": "Keywords to analyze, one per line (100+ supported). Duplicates are removed.",
+            "prefill": [
+                "ChatGPT",
+                "Claude",
+                "Gemini"
+            ]
+        },
+        "timeframe": {
+            "title": "Timeframe",
+            "type": "string",
+            "editor": "textfield",
+            "description": "now 1-H, now 4-H, now 1-d, now 7-d, today 1-m, today 3-m, today 12-m, today 5-y, all (2004–today) or a custom range such as 2024-01-01 2024-12-31. Short forms work too: 7d, 90d, 12m, 5y.",
+            "default": "today 12-m",
+            "prefill": "today 3-m"
+        },
+        "geo": {
+            "title": "Location",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Country code (US, IN, GB), region code (US-CA, GB-ENG) or country name (united_states). Empty = worldwide.",
+            "default": "",
+            "prefill": "US"
+        },
+        "category": {
+            "title": "Category",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Google Trends category ID or name. 0 / empty = all. Examples: 16 News, 71 Food & Drink, 20 Sports, 5 Computers & Electronics, 7 Finance, 174 Science, 18 Shopping, 67 Travel, 45 Health.",
+            "default": "0"
+        },
+        "searchType": {
+            "title": "Search type",
+            "type": "string",
+            "editor": "select",
+            "description": "Which Google search to measure: web search, YouTube, News, Images or Shopping.",
+            "enum": [
+                "web",
+                "youtube",
+                "news",
+                "images",
+                "shopping"
+            ],
+            "enumTitles": [
+                "Web search",
+                "YouTube search",
+                "Google News",
+                "Image search",
+                "Google Shopping"
+            ],
+            "default": "web"
+        },
+        "compareMode": {
+            "title": "Keyword mode",
+            "type": "string",
+            "editor": "select",
+            "description": "<b>Separately</b>: each keyword on its own 0–100 scale, with its own regions, related queries and topics. <b>Together</b>: all keywords on one shared 0–100 scale (share of search) — any number of keywords, batched 5 at a time with an anchor keyword so batches stay comparable.",
+            "enum": [
+                "separately",
+                "together"
+            ],
+            "enumTitles": [
+                "Separately (each keyword 0–100)",
+                "Together (one shared scale)"
+            ],
+            "default": "separately"
+        },
+        "includeInterestOverTime": {
+            "title": "Interest over time",
+            "type": "boolean",
+            "description": "Timeline of search interest (dates + values) and a summary (average, peak, peak date, latest, change %, trend direction).",
+            "default": true
+        },
+        "includeInterestByRegion": {
+            "title": "Interest by region",
+            "type": "boolean",
+            "description": "Where the keyword is searched most.",
+            "default": true
+        },
+        "regionResolution": {
+            "title": "Region level",
+            "type": "string",
+            "editor": "select",
+            "description": "Auto: countries for worldwide, states/provinces for a country. Metro areas (DMA) are available for the US.",
+            "enum": [
+                "auto",
+                "COUNTRY",
+                "REGION",
+                "DMA",
+                "CITY"
+            ],
+            "enumTitles": [
+                "Auto",
+                "Countries",
+                "States / provinces",
+                "Metro areas (US)",
+                "Cities"
+            ],
+            "default": "auto"
+        },
+        "maxRegions": {
+            "title": "Maximum regions",
+            "type": "integer",
+            "description": "Keep only the top N regions per keyword. 0 = all.",
+            "minimum": 0,
+            "default": 0
+        },
+        "includeLowVolumeRegions": {
+            "title": "Include low-volume regions",
+            "type": "boolean",
+            "description": "Also list regions where Google has too little data (value 0).",
+            "default": false
+        },
+        "includeRelatedQueries": {
+            "title": "Related queries",
+            "type": "boolean",
+            "description": "Top and rising related searches (rising values are % growth; \"Breakout\" = more than +5000%).",
+            "default": true
+        },
+        "includeRelatedTopics": {
+            "title": "Related topics",
+            "type": "boolean",
+            "description": "Top and rising related topics. Google hides topics from IPs it sees as automated; the scraper then retries through a residential IP (when available) and reports the status in related_topics_status.",
+            "default": true
+        },
+        "maxRelated": {
+            "title": "Maximum related items",
+            "type": "integer",
+            "description": "Per list (top / rising), up to 25.",
+            "minimum": 1,
+            "maximum": 25,
+            "default": 25
+        },
+        "retryTopicsWithResidential": {
+            "title": "Retry hidden topics with a residential IP",
+            "type": "boolean",
+            "description": "When Google hides related topics, fetch them once more through an Apify RESIDENTIAL IP (tiny traffic, no extra charge).",
+            "default": true
+        },
+        "includeTrending": {
+            "title": "Include trending searches",
+            "type": "boolean",
+            "description": "Also fetch today's trending searches (with approximate search volume, start time, picture and news articles).",
+            "default": false
+        },
+        "trendingCountry": {
+            "title": "Trending countries",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Country names or codes, comma-separated: united_states, india, united_kingdom, DE, JP…",
+            "default": "united_states"
+        },
+        "maxTrendingPerCountry": {
+            "title": "Maximum trending searches per country",
+            "type": "integer",
+            "description": "0 = all that Google publishes.",
+            "minimum": 0,
+            "default": 0
+        },
+        "language": {
+            "title": "Interface language",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Language of region and topic names (hl), e.g. en-US, de, fr, ja.",
+            "default": "en-US"
+        },
+        "timezoneOffsetMinutes": {
+            "title": "Timezone offset (minutes)",
+            "type": "integer",
+            "description": "Timezone for hourly/daily data, as Google expects it: minutes WEST of UTC. 0 = UTC, 300 = New York (EST), -330 = India.",
+            "minimum": -840,
+            "maximum": 840,
+            "default": 0
+        },
+        "maxItems": {
+            "title": "Maximum results",
+            "type": "integer",
+            "description": "Stop after this many charged results. 0 = no limit.",
+            "minimum": 0,
+            "default": 0
+        },
+        "proxyConfiguration": {
+            "title": "Proxy",
+            "type": "object",
+            "editor": "proxy",
+            "description": "Not needed for most runs. If Google rate-limits the server IP, the scraper switches to Apify datacenter, then RESIDENTIAL proxies automatically.",
+            "default": {
+                "useApifyProxy": false
+            }
+        },
+        "proxyFallback": {
+            "title": "Automatic proxy fallback",
+            "type": "boolean",
+            "description": "Switch to Apify proxies when Google keeps rate-limiting the current route.",
+            "default": true
+        }
+    }
+}

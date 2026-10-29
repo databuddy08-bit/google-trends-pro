@@ -1,0 +1,21 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Google Trends Pro output",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Keywords (Overview)",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "trending": {
+            "type": "string",
+            "title": "Trending now",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=trending"
+        },
+        "runSummary": {
+            "type": "string",
+            "title": "Run summary",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_SUMMARY"
+        }
+    }
+}

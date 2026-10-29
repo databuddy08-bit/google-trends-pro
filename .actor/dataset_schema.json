@@ -1,0 +1,173 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Keywords",
+            "transformation": {
+                "fields": [
+                    "keyword",
+                    "success",
+                    "timeframe",
+                    "geo_name",
+                    "search_type",
+                    "summary.avg_interest",
+                    "summary.peak_interest",
+                    "summary.peak_date",
+                    "summary.latest_interest",
+                    "summary.change_pct",
+                    "summary.trend_direction",
+                    "related_queries.rising",
+                    "interest_by_region",
+                    "explore_url",
+                    "error"
+                ],
+                "flatten": [
+                    "related_queries",
+                    "summary"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "keyword": {
+                        "label": "Keyword"
+                    },
+                    "success": {
+                        "label": "Has data",
+                        "format": "boolean"
+                    },
+                    "timeframe": {
+                        "label": "Timeframe"
+                    },
+                    "geo_name": {
+                        "label": "Location"
+                    },
+                    "search_type": {
+                        "label": "Search type"
+                    },
+                    "summary.avg_interest": {
+                        "label": "Avg interest",
+                        "format": "number"
+                    },
+                    "summary.peak_interest": {
+                        "label": "Peak",
+                        "format": "number"
+                    },
+                    "summary.peak_date": {
+                        "label": "Peak date"
+                    },
+                    "summary.latest_interest": {
+                        "label": "Latest",
+                        "format": "number"
+                    },
+                    "summary.change_pct": {
+                        "label": "Change %",
+                        "format": "number"
+                    },
+                    "summary.trend_direction": {
+                        "label": "Trend"
+                    },
+                    "related_queries.rising": {
+                        "label": "Rising queries",
+                        "format": "array"
+                    },
+                    "interest_by_region": {
+                        "label": "Top regions",
+                        "format": "array"
+                    },
+                    "explore_url": {
+                        "label": "Open in Google Trends",
+                        "format": "link"
+                    },
+                    "error": {
+                        "label": "Error"
+                    }
+                }
+            }
+        },
+        "related": {
+            "title": "Related queries & topics",
+            "transformation": {
+                "fields": [
+                    "keyword",
+                    "related_queries.top",
+                    "related_queries.rising",
+                    "related_topics.rising",
+                    "related_topics_status"
+                ],
+                "flatten": [
+                    "related_queries",
+                    "related_topics"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "keyword": {
+                        "label": "Keyword"
+                    },
+                    "related_queries.top": {
+                        "label": "Top queries",
+                        "format": "array"
+                    },
+                    "related_queries.rising": {
+                        "label": "Rising queries",
+                        "format": "array"
+                    },
+                    "related_topics.rising": {
+                        "label": "Rising topics",
+                        "format": "array"
+                    },
+                    "related_topics_status": {
+                        "label": "Topics status"
+                    }
+                }
+            }
+        },
+        "trending": {
+            "title": "Trending now",
+            "transformation": {
+                "fields": [
+                    "country",
+                    "rank",
+                    "query",
+                    "approx_traffic",
+                    "started_at",
+                    "picture",
+                    "news"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "country": {
+                        "label": "Country"
+                    },
+                    "rank": {
+                        "label": "Rank",
+                        "format": "number"
+                    },
+                    "query": {
+                        "label": "Trending search"
+                    },
+                    "approx_traffic": {
+                        "label": "Approx. searches"
+                    },
+                    "started_at": {
+                        "label": "Started",
+                        "format": "date"
+                    },
+                    "picture": {
+                        "label": "Picture",
+                        "format": "image"
+                    },
+                    "news": {
+                        "label": "News",
+                        "format": "array"
+                    }
+                }
+            }
+        }
+    }
+}

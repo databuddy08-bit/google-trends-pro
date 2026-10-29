@@ -1,0 +1,16 @@
+{
+    "actorSpecification": 1,
+    "name": "google-trends-pro",
+    "title": "Google Trends Scraper Pro — Interest, Regions, Related Queries & Trending",
+    "description": "Google Trends for keyword research & SEO: interest over time, interest by state/metro/city, related queries and topics, today's trending searches with news. Bulk keywords on one comparable scale, any country, timeframe, category, or search type (web, YouTube, News, Images, Shopping).",
+    "version": "1.0",
+    "buildTag": "latest",
+    "defaultMemoryMbytes": 512,
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md"
+}
